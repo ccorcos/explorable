@@ -14,7 +14,7 @@ This repo demonstrates the use [`markdown-it-component`](https://github.com/ccor
 
 - Create [Tangle-like](http://worrydream.com/Tangle/) interactive components.
 
-	> If you put $[Invest]{} per month into a 401K that makes [Interest]{}% interest, then after [Time]{} years, you'll have [Total]{}!
+	> If you put $[Invest]{} per month into an investment that makes [Interest]{}% interest, then after [Time]{} years, you'll have [Total]{}!
 
 - Embed rich interactive media into your documents.
 

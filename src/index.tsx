@@ -5,6 +5,10 @@ import * as article from "raw-loader!./article.md"
 import ReactRenderer from "markdown-it-renderer/ReactRenderer"
 import Counter from "./components/Counter"
 import * as MarkdownItComponent from "markdown-it-component"
+import * as interest from "./interest"
+import Range from "./components/Range"
+import Render from "./components/Render"
+import ColorPicker from "./components/ColorPicker"
 
 css.global("a", {
 	color: "inherit",
@@ -17,6 +21,37 @@ const renderer = new ReactRenderer(
 			if (name === "Counter") {
 				return <Counter {...props} />
 			}
+			if (name === "Invest") {
+				return (
+					<Range
+						min={0}
+						max={10000}
+						decimal={0}
+						value={interest.contribution}
+					/>
+				)
+			}
+			if (name === "Interest") {
+				return (
+					<Range min={0.01} max={0.2} decimal={2} value={interest.interest} />
+				)
+			}
+			if (name === "Time") {
+				return <Range min={1} max={100} decimal={0} value={interest.time} />
+			}
+			if (name === "Total") {
+				return (
+					<Render
+						render={() => <span>{Math.round(interest.total.get())}</span>}
+					/>
+				)
+			}
+			if (name === "ColorPicker") {
+				return <ColorPicker />
+			}
+			// Total
+			// ColorPicker
+			// ColorSwatch
 		},
 	},
 	[MarkdownItComponent({ jsonData: true })]

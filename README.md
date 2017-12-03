@@ -1,11 +1,8 @@
 # Explorable Markdown Explanations
 
-todo
-- example
-	- counter
-	- tangle
-	- color picker
+- draggable
+- refactor range
+- gradient picker
 - cli tool
-- images
-- renderer reat and string example
-- renderer readme
+- publish with helpful components
+- compile images

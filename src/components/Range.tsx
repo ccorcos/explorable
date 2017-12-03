@@ -1,7 +1,7 @@
 import * as React from "react"
 import Component from "reactive-magic/component"
 import { Value } from "reactive-magic"
-import Draggable, { Point } from "./Draggable"
+import Slider from "./Slider"
 
 export interface RangeProps {
 	min: number
@@ -12,35 +12,18 @@ export interface RangeProps {
 }
 
 export default class Range extends Component<RangeProps> {
-	private startValue: number = 0
-
-	private handleDragStart = () => {
-		this.startValue = this.props.value.get()
-	}
-
-	private handleDragMove = (offset: Point) => {
-		const range = this.props.max - this.props.min
-		const delta = offset.x / window.innerWidth * 2 * range
-
-		this.props.value.set(
-			Math.min(
-				Math.max(this.startValue + delta, this.props.min),
-				this.props.max
-			)
-		)
-	}
-
 	view() {
 		const factor = Math.pow(10, this.props.decimal)
 		return (
-			<Draggable
-				onDragStart={this.handleDragStart}
-				onDragMove={this.handleDragMove}
+			<Slider
+				min={this.props.min}
+				max={this.props.max}
+				value={this.props.value}
+				scale={1 / window.innerWidth * 2 * (this.props.max - this.props.min)}
 				render={({ dragState, ...events }) => {
 					return (
 						<span
 							style={{
-								maring: 5,
 								userSelect: "none",
 								cursor: "ew-resize",
 								...this.props.style,

@@ -1,8 +1,5 @@
 # Explorable Markdown Explanations
 
-- draggable
-- refactor range
-- gradient picker
-- cli tool
-- publish with helpful components
+- cli tool?
 - compile images
+- publish with helpful components

@@ -1,6 +1,7 @@
 import * as React from "react"
 import Component from "reactive-magic/component"
 import { Value } from "reactive-magic"
+import Draggable, { Point } from "./Draggable"
 
 export interface RangeProps {
 	min: number
@@ -10,78 +11,47 @@ export interface RangeProps {
 	style?: React.CSSProperties
 }
 
-type DragState =
-	| {
-			dragging: true
-			startX: number
-			startValue: number
-			valueRange: number
-		}
-	| { dragging: false }
-
 export default class Range extends Component<RangeProps> {
-	willUnmount() {
-		this.stopListeners()
+	private startValue: number = 0
+
+	private handleDragStart = () => {
+		this.startValue = this.props.value.get()
 	}
 
-	private dragState: DragState = { dragging: false }
+	private handleDragMove = (offset: Point) => {
+		const range = this.props.max - this.props.min
+		const delta = offset.x / window.innerWidth * 2 * range
 
-	private handleMouseDown = (e: React.MouseEvent<any>) => {
-		const value = this.props.value.get()
-		this.dragState = {
-			dragging: true,
-			startX: e.clientX,
-			startValue: value,
-			valueRange: this.props.max - this.props.min,
-		}
-		this.startListeners()
-	}
-
-	private startListeners() {
-		window.addEventListener("mousemove", this.handleMouseMove)
-		window.addEventListener("mouseup", this.handleMouseUp)
-	}
-
-	private stopListeners() {
-		window.removeEventListener("mousemove", this.handleMouseMove)
-		window.removeEventListener("mouseup", this.handleMouseUp)
-	}
-
-	private handleMouseMove = (e: MouseEvent) => {
-		if (this.dragState.dragging) {
-			const delta =
-				(e.clientX - this.dragState.startX) /
-				window.innerWidth /
-				2 *
-				this.dragState.valueRange
-			this.props.value.set(
-				Math.min(
-					Math.max(this.dragState.startValue + delta, this.props.min),
-					this.props.max
-				)
+		this.props.value.set(
+			Math.min(
+				Math.max(this.startValue + delta, this.props.min),
+				this.props.max
 			)
-		}
-	}
-
-	private handleMouseUp = (e: MouseEvent) => {
-		this.dragState = { dragging: false }
-		this.stopListeners()
+		)
 	}
 
 	view() {
 		const factor = Math.pow(10, this.props.decimal)
 		return (
-			<span
-				style={{
-					maring: 5,
-					userSelect: "none",
-					cursor: "ew-resize",
-					...this.props.style,
+			<Draggable
+				onDragStart={this.handleDragStart}
+				onDragMove={this.handleDragMove}
+				render={({ dragState, ...events }) => {
+					return (
+						<span
+							style={{
+								maring: 5,
+								userSelect: "none",
+								cursor: "ew-resize",
+								...this.props.style,
+							}}
+							{...events}
+						>
+							{Math.round(this.props.value.get() * factor) / factor}
+						</span>
+					)
 				}}
-				onMouseDown={this.handleMouseDown}
-			>
-				{Math.round(this.props.value.get() * factor) / factor}
-			</span>
+			/>
 		)
 	}
 }

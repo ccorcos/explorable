@@ -2,7 +2,7 @@ import * as React from "react"
 import { Value } from "reactive-magic"
 import Component from "reactive-magic/component"
 
-type Point = {
+export type Point = {
 	x: number
 	y: number
 }

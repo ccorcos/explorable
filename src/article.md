@@ -21,3 +21,7 @@ This repo demonstrates the use [`markdown-it-component`](https://github.com/ccor
 	[ColorPicker]{}
 
 	[ColorSwatch]{}
+
+- Embed an image:
+
+	![](./static/leaves.jpg)

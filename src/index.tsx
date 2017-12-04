@@ -9,6 +9,7 @@ import * as interest from "./interest"
 import Range from "./components/Range"
 import Render from "./components/Render"
 import ColorPicker from "./components/ColorPicker"
+import images from "./images"
 
 css.global("a", {
 	color: "inherit",
@@ -18,6 +19,9 @@ css.global("a", {
 const renderer = new ReactRenderer(
 	{
 		tag: (name, props, children) => {
+			if (name === "img") {
+				return <img {...props} src={images[props.src]} />
+			}
 			if (name === "Counter") {
 				return <Counter {...props} />
 			}

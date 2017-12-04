@@ -1,5 +1,6 @@
 # Explorable Markdown Explanations
 
-- cli tool?
 - compile images
+- cli tool?
 - publish with helpful components
+- MathJS

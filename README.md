@@ -1,5 +1,6 @@
 # Explorable Markdown Explanations
 
+- lerna
 - cli tool?
 	- article.md
 	- index.html

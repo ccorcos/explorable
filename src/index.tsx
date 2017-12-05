@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
+import * as glamor from "glamor"
 import * as article from "raw-loader!./article.md"
 import ReactRenderer from "markdown-it-renderer/ReactRenderer"
 import Counter from "./components/Counter"
@@ -9,6 +10,15 @@ import Range from "./components/Range"
 import Render from "./components/Render"
 import ColorPicker from "./components/ColorPicker"
 import images from "./images"
+
+glamor.css.global("html, body", {
+	padding: 0,
+	margin: "1em 2em",
+	maxWidth: "50em",
+	fontFamily: '-apple-system, "Helvetica", "Arial", sans-serif',
+	color: "#444",
+	tabSize: 4,
+})
 
 const renderer = new ReactRenderer(
 	{

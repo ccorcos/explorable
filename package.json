@@ -18,7 +18,7 @@
 		"lodash": "^4.17.4",
 		"markdown-it": "^8.4.0",
 		"markdown-it-component": "^1.1.0",
-		"markdown-it-renderer": "^2.2.0",
+		"markdown-it-renderer": "^2.2.1",
 		"react": "^16.1.1",
 		"react-dom": "^16.1.1",
 		"reactive-magic": "^2.1.1"

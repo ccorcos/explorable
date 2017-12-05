@@ -1,6 +1,5 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { css } from "glamor"
 import * as article from "raw-loader!./article.md"
 import ReactRenderer from "markdown-it-renderer/ReactRenderer"
 import Counter from "./components/Counter"
@@ -11,16 +10,17 @@ import Render from "./components/Render"
 import ColorPicker from "./components/ColorPicker"
 import images from "./images"
 
-css.global("a", {
-	color: "inherit",
-	textDecoration: "none",
-})
-
 const renderer = new ReactRenderer(
 	{
 		tag: (name, props, children) => {
 			if (name === "img") {
-				return <img {...props} src={images[props.src]} />
+				return (
+					<img
+						{...props}
+						src={images[props.src]}
+						style={{ maxWidth: "100%", width: 400 }}
+					/>
+				)
 			}
 			if (name === "Counter") {
 				return <Counter {...props} />
@@ -53,9 +53,6 @@ const renderer = new ReactRenderer(
 			if (name === "ColorPicker") {
 				return <ColorPicker />
 			}
-			// Total
-			// ColorPicker
-			// ColorSwatch
 		},
 	},
 	[MarkdownItComponent({ jsonData: true })]

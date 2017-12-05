@@ -12,7 +12,7 @@ const renderer = new StringRenderer({
 	},
 })
 
-const article = fs.readFileSync(`${__dirname}/article.md`, "utf8")
+const article = fs.readFileSync(`${__dirname}/../article.md`, "utf8")
 
 renderer.render(article)
 
@@ -21,6 +21,7 @@ const lines = Array.from(images).map(src => {
 })
 
 const file = `
+// THIS IS A GENERATED FILE
 
 const images = {
 	${lines.join("\n")}
@@ -30,4 +31,4 @@ export default images
 
 `
 
-fs.writeFileSync(`${__dirname}/images.ts`, file, "utf8")
+fs.writeFileSync(`${__dirname}/../images.ts`, file, "utf8")

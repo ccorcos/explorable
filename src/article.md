@@ -18,13 +18,33 @@ You can find the repo for this demo [here](https://github.com/ccorcos/explorable
 
 - Create [Tangle-like](http://worrydream.com/Tangle/) interactive components.
 
-	> If you put $[Invest]{} per year into an investment that makes [Interest]{}% interest, then after [Time]{} years, you'll have [Total]{}!
+	> If you put $[Tangle]{
+			name: "contribution",
+			init: 1000,
+			min: 1,
+			max: 10000,
+			decimal: 0
+		} per year into an investment that makes [Tangle]{
+			name: "interest",
+			init: 5,
+			min: 1,
+			max: 20,
+			decimal: 1
+		}% interest, then after [Tangle]{
+			name: "years",
+			init: 10,
+			min: 1,
+			max: 100,
+			decimal: 0
+		} years, you'll have $[Tangle]{
+			name: "total",
+			decimal: 0,
+			eval: "contribution() / (interest() / 100) * (pow(1 + interest() / 100, years() + 1) - (1 + interest() / 100))"
+		}!
 
 - Embed rich interactive media into your documents.
 
 	[ColorPicker]{}
-
-	[ColorSwatch]{}
 
 - Embed an image:
 

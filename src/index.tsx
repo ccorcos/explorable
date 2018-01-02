@@ -4,13 +4,9 @@ import * as glamor from "glamor"
 import ReactRenderer from "markdown-it-renderer/ReactRenderer"
 import Counter from "./components/Counter"
 import * as MarkdownItComponent from "markdown-it-component"
-import * as interest from "./interest"
-import Range from "./components/Range"
-import Render from "./components/Render"
+import * as Tangle from "./components/Tangle"
 import ColorPicker from "./components/ColorPicker"
 import * as ast from "./article.md"
-
-console.log(ast)
 
 glamor.css.global("html", {
 	padding: 0,
@@ -31,32 +27,30 @@ glamor.css.global("img", {
 })
 
 const renderer = new ReactRenderer({
-	tag: (name, props, children) => {
+	tag: (name, props: any, children) => {
 		if (name === "Counter") {
 			return <Counter {...props} />
 		}
-		if (name === "Invest") {
-			return (
-				<Range min={0} max={10000} decimal={0} value={interest.contribution} />
-			)
-		}
-		if (name === "Interest") {
-			return (
-				<Range min={0.01} max={0.2} decimal={2} value={interest.interest} />
-			)
-		}
-		if (name === "Time") {
-			return <Range min={1} max={100} decimal={0} value={interest.time} />
-		}
-		if (name === "Total") {
-			return (
-				<Render
-					render={() => <span>{Math.round(interest.total.get())}</span>}
-				/>
-			)
+		if (name === "Tangle") {
+			if (props.eval) {
+				return <Tangle.Output {...props} />
+			} else {
+				return <Tangle.Input {...props} />
+			}
 		}
 		if (name === "ColorPicker") {
 			return <ColorPicker />
+		}
+		// Fix the annoying div inside a p warning.
+		if (name === "p") {
+			return React.createElement(
+				"div",
+				{
+					style: { margin: "1em 0" },
+					...props,
+				},
+				...children
+			)
 		}
 	},
 })

@@ -15,10 +15,11 @@
   "dependencies": {
     "glamor": "^2.20.40",
     "lodash": "^4.17.4",
+    "markdown-it-renderer": "^2.4.0",
+    "mathjs": "^3.18.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "reactive-magic": "^2.1.5",
-    "markdown-it-renderer": "^2.4.0"
+    "reactive-magic": "^2.1.5"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.85",

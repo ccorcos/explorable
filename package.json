@@ -6,8 +6,8 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "rm -rf dist && parcel build src/index.html --public-url '.'",
-    "deploy": "git add -f dist && git commit -m 'Temporary commit' && git subtree push --prefix dist origin gh-pages && git reset HEAD~",
-    "release": "npm run build && npm run deploy"
+		"deploy": "git add -f dist && git commit -m 'Temporary commit' && git push origin `git subtree split --prefix dist master`:gh-pages --force && git reset HEAD~",
+		"release": "npm run build && npm run deploy"
   },
   "keywords": [],
   "author": "Chet Corcos <ccorcos@gmail.com> (http://www.chetcorcos.com/)",

@@ -1,4 +1,4 @@
-# Explorable Explanations with Markdown [[Demo](http://ccorcos.github.io/explorable)]
+# Explorable Explanations with Markdown [[Demo](https://ccorcos.github.io/explorable/)]
 
 This repo shows how easy it is to create [explorable explanations](http://explorabl.es/) with markdown.
 

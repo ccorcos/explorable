@@ -1,41 +1,33 @@
 {
-	"name": "explorable",
-	"version": "1.0.0",
-	"description": "Using markdown and react to create explorable explanations",
-	"main": "index.js",
-	"scripts": {
-		"start": "webpack-dev-server --content-base dist",
-		"build": "npm run compile && rm -rf dist && webpack -p",
-		"deploy": "git add -f dist && git commit -m 'deploy' && git push origin `git subtree split --prefix dist master`:gh-pages --force && git rm -r dist && git commit -m 'cleanup deploy'",
-		"release": "npm run build && npm run deploy",
-		"compile": "ts-node ./src/tools/compile.ts"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT",
-	"dependencies": {
-		"glamor": "^2.20.40",
-		"lodash": "^4.17.4",
-		"markdown-it": "^8.4.0",
-		"markdown-it-component": "^1.1.0",
-		"markdown-it-renderer": "^2.2.1",
-		"react": "^16.1.1",
-		"react-dom": "^16.1.1",
-		"reactive-magic": "^2.1.1"
-	},
-	"devDependencies": {
-		"@types/lodash": "^4.14.85",
-		"@types/markdown-it": "0.0.4",
-		"@types/react": "^16.0.25",
-		"@types/react-dom": "^16.0.3",
-		"@types/webpack": "^3.8.1",
-		"awesome-typescript-loader": "^3.4.1",
-		"file-loader": "^1.1.5",
-		"html-webpack-plugin": "^2.30.1",
-		"raw-loader": "^0.5.1",
-		"ts-node": "^3.3.0",
-		"typescript": "^2.6.2",
-		"webpack": "^3.8.1",
-		"webpack-dev-server": "^2.9.5"
-	}
+  "name": "draw-svg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "rm -rf dist && parcel build src/index.html --public-url '.'",
+    "deploy": "git add -f dist && git commit -m 'Temporary commit' && git subtree push --prefix dist origin gh-pages && git reset HEAD~",
+    "release": "npm run build && npm run deploy"
+  },
+  "keywords": [],
+  "author": "Chet Corcos <ccorcos@gmail.com> (http://www.chetcorcos.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "glamor": "^2.20.40",
+    "lodash": "^4.17.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "reactive-magic": "^2.1.5",
+    "markdown-it-renderer": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.85",
+    "@types/react": "^16.0.25",
+    "@types/react-dom": "^16.0.3",
+    "parcel-bundler": "^1.2.0",
+    "parcel-plugin-explorable": "^0.1.5",
+    "parcel-plugin-typescript": "^0.2.0-next.fix-hang",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.2"
+  }
 }

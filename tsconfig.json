@@ -7,7 +7,7 @@
 		"jsx": "react",
 		"moduleResolution": "node",
 		"noImplicitAny": false,
-		"noUnusedLocals": true,
+		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"removeComments": true,
 		"strictNullChecks": true,

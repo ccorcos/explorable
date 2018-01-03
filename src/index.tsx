@@ -56,6 +56,5 @@ const renderer = new ReactRenderer({
 })
 const rendered = renderer.renderAst(ast)
 
-const root = document.createElement("div")
-document.body.appendChild(root)
+const root = document.getElementById("root")
 ReactDOM.render(<div>{rendered}</div>, root)

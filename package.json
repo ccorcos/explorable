@@ -26,7 +26,7 @@
     "@types/react": "^16.0.25",
     "@types/react-dom": "^16.0.3",
     "parcel-bundler": "^1.2.0",
-    "parcel-plugin-explorable": "^0.1.5",
+    "parcel-plugin-explorable": "^0.2.0",
     "parcel-plugin-typescript": "^0.2.0-next.fix-hang",
     "ts-node": "^3.3.0",
     "typescript": "^2.6.2"
